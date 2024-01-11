@@ -1,0 +1,30 @@
+$main-color: #1a2f6b;
+$secondary-color: #425fb5;
+$pure-white: #fff;
+$light-white: rgb(238, 238, 238);
+$light-white-pure: rgba(238, 238, 238, 0.4);
+$dark: #2e2e2e;
+$grey: #636363;
+$light-grey: #e9e9e8;
+$green-color-hover: #041507;
+$blue-color: #0d5aba;
+// $blue-color: #164dcc;
+$blue-color_hover: #041b93;
+// $blue-color_hover: #415db5;
+$yellow-color: rgb(255, 207, 0);
+
+// niebieskie na stronie ZSP Chełmża
+// jaśniejszy niebieski #0d5aba
+// ciemniejszy niebieski #041b93
+$zsp-gradient: linear-gradient(315deg, rgba(13, 90, 186, 0.5), rgba(4, 27, 147, 0.5));
+$zsp-dark-gradient: linear-gradient(45deg,rgba(4, 27, 147, 0.6), rgba(19, 20, 21, 0.6));
+$zsp-gradient-solid: linear-gradient(135deg, rgb(13, 90, 186), rgb(4, 27, 147));
+
+$dark-gradient: linear-gradient(315deg, rgba(0, 0, 0, 0.5), rgba(64, 64, 64, 0.5));
+$dark-gradient2: linear-gradient(145deg, rgba(0, 0, 0, 0.95), rgba(64, 64, 64, 0.97));
+$dark-gradient-solid: linear-gradient(45deg, #000000 0%, #353535 75%);
+
+$green-dark-gradient: linear-gradient(245deg, rgba(17, 129, 5, 0.75), rgba(4, 27, 147, 0.75));
+$gold-dark-gradient: linear-gradient(245deg, rgba(59, 54, 13, 0.75), rgba(4, 27, 147, 0.75));
+$blue-dark-gradient: linear-gradient(245deg, rgba(20, 105, 241, 0.75), rgba(42, 10, 184, 0.75));
+$purple-dark-gradient: linear-gradient(245deg, rgba(99, 9, 111, 0.75), rgba(4, 27, 147, 0.75));

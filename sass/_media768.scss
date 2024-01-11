@@ -1,0 +1,101 @@
+// media768
+@media (min-width: 768px) {
+	.nav {
+		height: 20vh;
+		text-align: center;
+
+		&__item {
+			display: inline-block;
+			width: 20%;
+			flex-direction: column;
+			// justify-content: space-evenly;
+			justify-content: center;
+			align-items: center;
+			// border: 1px solid orange;
+			margin: 0 0.5em;
+			font-size: 1.6rem;
+			padding: 0.5em;
+
+			&::before {
+				content: '';
+				top: 100%;
+				left: 0;
+				height: 3px;
+				width: 100%;
+				transform: scaleX(0);
+			}
+			&:hover::before {
+				transform: scaleX(1);
+			}
+		}
+	}
+
+	.header {
+		&__heading {
+			font-size: 6rem;
+		}
+		&__text {
+			font-size: 4rem;
+		}
+		&__btn {
+			font-size: 2.4rem;
+		}
+	}
+
+	.description {
+		&__text {
+			font-size: 1.8rem;
+		}
+	}
+	.teachers__card {
+		margin: 2em;
+		display: grid;
+		gap: 50px;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 1fr 1fr;
+	}
+	.teacher {
+		&__card {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			&-img {
+				width: 90%;
+			}
+		}
+	}
+	.meeting {
+		.meeting-card {
+			&__number {
+				font-size: 2.8rem;
+			}
+
+			&__title {
+				font-size: 3.6rem;
+			}
+			&__text {
+				font-size: 2.6rem;
+			}
+		}
+	}
+
+	.the-footer {
+		// height: 50vh;
+		.footer {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: space-evenly;
+			&__logo {
+				.logoZSP {
+					height: 250px;
+					margin: auto 1.5em;
+				}
+			}
+			&__text {
+				font-size: 2.4rem;
+				margin: auto;
+			}
+		}
+	}
+}

@@ -1,0 +1,34 @@
+// media1200
+@media (min-width: 1200px) {
+	.nav {
+		&__item {
+			font-size: 3rem;
+		}
+	}
+	.meeting {
+		&__option {
+			&-heading {
+				font-size: 3.5rem;
+			}
+			&-text {
+				font-size: 2.5rem;
+				margin: 0.2em;
+			}
+			&-text::last-child {
+				margin: 0;
+			}
+			&-img {
+				height: 100%;
+				width: auto;
+			}
+		}
+	}
+
+	.the-footer {
+		.footer {
+			&__text {
+				font-size: 3rem;
+			}
+		}
+	}
+}

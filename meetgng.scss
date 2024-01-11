@@ -1,0 +1,54 @@
+// kopia zapasowa poprzedniego pomysłu
+
+// MEETING
+
+.meeting {
+	position: relative;
+	padding: 3em 1em;
+	margin: 3em 0;
+	background-image: colors.$light-white;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	overflow: hidden;
+	.section-heading {
+		color: colors.$main-color;
+		// padding: 0 0 1em;
+	}
+	&__box {
+		margin: 2em;
+	}
+
+	&__option {
+		margin: 3em 1em;
+		box-shadow: 5px 5px 10px #2e2e2e;
+		background-color: colors.$pure-white;
+		overflow: hidden;
+
+		&-info {
+			padding: 2em 1em 2em;
+			background-color: colors.$pure-white;
+			z-index: 10;
+		}
+
+		&-img {
+			width: 100%;
+			// max-height: 800px;
+			transition: transform 0.3s;
+			z-index: 9;
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+
+		&-heading {
+			margin-bottom: 1em;
+			font-size: 2.4rem;
+			font-weight: 300;
+			text-align: center;
+		}
+		&-text {
+			font-size: 1.2em;
+		}
+	}
+}

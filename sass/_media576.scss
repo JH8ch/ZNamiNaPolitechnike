@@ -1,0 +1,63 @@
+// media576
+@media (min-width: 576px) {
+	.header {
+		&__heading {
+			font-size: 4.5rem;
+		}
+		&__text {
+			font-size: 3.5rem;
+		}
+		&__btn {
+			font-size: 2.2rem;
+		}
+	}
+
+
+	.description {
+		&__box {
+			flex-direction: row;
+			justify-content: space-between;
+
+			&-img {
+				width: 40%;
+				&--right {
+					order: 1;
+				}
+			}
+
+			&-text {
+				width: 55%;
+				&--right {
+					text-align: right;
+				}
+			}
+		}
+
+		&__img {
+			margin-bottom: 0;
+			max-height: 300px;
+		}
+	}
+	.meeting {
+		.meeting-card {
+			&__number {
+				font-size: 2.4rem;
+			}
+
+			&__title {
+				font-size: 3.2rem;
+			}
+			&__text {
+				font-size: 2.2rem;
+			}
+		}
+	}
+	
+	.the-footer {
+		.footer {
+			&__text {
+				font-size: 2.2rem;
+			}
+		}
+	}
+}

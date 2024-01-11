@@ -1,0 +1,572 @@
+@use './colors' as colors;
+@use './components' as components;
+@use './mixins' as mixins;
+@use './animations' as animations;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	//font-family: 'Dancing Script', cursive;
+	font-size: 1.6rem;
+	// background-color: colors.$dark;
+	background-color: colors.$light-white;
+}
+
+// nav
+.burger-btn {
+	position: fixed;
+	top: 2em;
+	right: 3.5em;
+	padding: 1em;
+	background: none;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	cursor: pointer;
+	z-index: 1000;
+	transition: border 0.3s;
+
+	&:focus {
+		outline: none;
+		border: 1px solid colors.$light-grey;
+		border-radius: 8px;
+	}
+
+	&:hover {
+		border: 1px solid colors.$light-grey;
+		.burger-btn__bars::before,
+		.burger-btn__bars::after {
+			width: 100%;
+		}
+	}
+
+	&__box {
+		position: relative;
+		width: 40px;
+		height: 30px;
+	}
+
+	&__bars,
+	&__bars::before,
+	&__bars::after {
+		position: absolute;
+		right: 0;
+		height: 3px;
+		content: '';
+		background-color: colors.$pure-white;
+		transition: width 0.3s;
+		// border: 1px solid colors.$dark;
+	}
+	&__bars--dark,
+	&__bars--dark::before,
+	&__bars--dark::after {
+		background-color: colors.$dark;
+	}
+	&__bars {
+		top: 0;
+		width: 100%;
+
+		&::before {
+			top: 13px;
+			width: 66%;
+		}
+
+		&::after {
+			top: 26px;
+			width: 33%;
+			transition-delay: 0.1s;
+			// opuźnienie
+		}
+	}
+}
+
+.btn-special-animation {
+	position: relative;
+	transition: background-color 0.5s;
+	overflow: hidden;
+	z-index: 0;
+
+	&::before {
+		display: block;
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform 0.5s;
+		z-index: -1;
+	}
+
+	&:hover::before {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+}
+
+.nav {
+	position: fixed;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	transform: translateY(-100%);
+	background-image: colors.$zsp-gradient-solid;
+	z-index: 100;
+	transition: transform 0.5s cubic-bezier(0.65, 0.45, 0.85, 1);
+
+	&--active {
+		transform: translateY(0);
+	}
+
+	&__item {
+		position: relative;
+		display: block;
+		color: colors.$pure-white;
+		font-size: 2.8em;
+		margin: 0.5em 0;
+		padding: 0.5em 1em;
+		text-decoration: none;
+		font-weight: 300;
+		letter-spacing: 3px;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0.5em;
+			width: 3px;
+			height: 100%;
+			background-color: colors.$pure-white;
+			transform: scaleY(0);
+			transition: transform 0.5s;
+		}
+
+		&:hover::before {
+			transform: scaleY(1);
+		}
+	}
+}
+
+.nav-items-animation {
+	animation: navItemsAnimation 1s both;
+}
+
+// header
+.header {
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-direction: column;
+	padding: 2em;
+	// height: 90vh;
+	height: 75vh;
+	text-align: center;
+	color: colors.$pure-white;
+	// @include heroImages();
+	background-image: colors.$dark-gradient, url('../img/header-small.jpg');
+	background-size: cover;
+	background-position: center;
+	// background-attachment: fixed;
+	background-attachment: scroll;
+	span {
+		letter-spacing: 3px;
+	}
+	&__heading {
+		font-style: italic;
+		// font-family: 'Dancing Script', cursive;
+		font-size: 4rem;
+		// margin-bottom: 0.5em;
+	}
+
+	&__text {
+		// font-family: 'Dancing Script', cursive;
+		font-style: italic;
+		font-size: 3.6rem;
+	}
+
+	&__btn {
+		margin-top: 1.5em;
+		padding: 0.8em 1.2em;
+		font-size: 2.2rem;
+		background-image: colors.$zsp-gradient;
+		// background-color: transparent;
+		border: none;
+		border-radius: 50%;
+		color: colors.$pure-white;
+		text-decoration: none;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: background-color 0.3s, color 0.3s;
+
+		&::before {
+			background-color: colors.$main-color;
+		}
+	}
+	&__btn:hover {
+		animation: pulse 1.5s ease infinite both;
+	}
+}
+
+// ================================================
+// MAIN
+// ================================================
+
+// sekcja DESCRIPTION
+.description {
+	&__box {
+		display: flex;
+		flex-direction: column;
+		margin: 2em 1em;
+		padding: 1em;
+	}
+
+	&__img {
+		width: 100%;
+		height: 300px;
+		margin-bottom: 1em;
+	}
+
+	&__title {
+		margin-bottom: 0.5em;
+	}
+
+	&__text {
+		font-size: 1.8rem;
+		line-height: 2.25rem;
+	}
+
+	&__ul {
+		// list-style-position: inside;
+		list-style-position: outside;
+		list-style-type: square;
+		margin-left: 1.25em;
+		// list-style-position: 0px 25px;
+		// list-style: none;
+	}
+}
+
+// HERO-IMG
+.hero-img {
+	position: relative;
+	padding: 10em 2em;
+	background-image: colors.$dark-gradient, url('../img/header-small.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	// background-attachment: scroll;
+	text-align: center;
+	color: colors.$pure-white;
+
+	&__title {
+		font-style: italic;
+		font-size: 5rem;
+		margin-bottom: 1em;
+		&--subtitle {
+			font-size: 2.4rem;
+			padding: 1em 2em;
+		}
+	}
+
+	&__text {
+		font-family: 'Dancing Script', cursive;
+		font-size: 4.2rem;
+		padding: 1em 0;
+		&--first {
+			padding: 1em 0 0 0;
+		}
+		&--last {
+			padding: 0 0 1em 0;
+		}
+	}
+
+	hr {
+		width: 70%;
+		margin: 0 auto;
+		max-width: 900px;
+	}
+}
+
+// teachers
+
+.teacher {
+	&__card {
+		position: relative;
+		margin: 3em 1em;
+		height: 500px;
+		color: colors.$pure-white;
+		text-align: center;
+		perspective: 1000px;
+		transition: box-shadow 0.5s;
+
+		&:hover {
+			.teacher__card-img {
+				transform: rotateY(-180deg);
+				opacity: 0;
+			}
+			.teacher__card-info {
+				transform: rotateY(0deg);
+				box-shadow: 10px 10px 15px colors.$blue-color_hover;
+				opacity: 1;
+			}
+		}
+
+		&-img {
+			position: relative;
+			padding: 2em;
+			height: 100%;
+			border-radius: 8px;
+			border: 1px solid colors.$dark;
+			box-shadow: 15px 10px 10px colors.$dark;
+			background-size: cover;
+			transition: transform 1s, opacity 1s;
+			&--first {
+				background-image: colors.$green-dark-gradient, url(../img/teacher1.jpg);
+			}
+			&--second {
+				background-image: colors.$gold-dark-gradient, url(../img/teacher2.jpg);
+			}
+			&--third {
+				background-image: colors.$blue-dark-gradient, url(../img/teacher3.jpg);
+			}
+			&--fourth {
+				background-image: colors.$purple-dark-gradient, url(../img/teacher4.jpg);
+			}
+			&-title {
+				font-family: 'Dancing Script', cursive;
+				font-size: 2.8rem;
+			}
+
+			&-info {
+				position: absolute;
+				bottom: 30px;
+				right: 30px;
+				font-size: 1.8rem;
+				text-align: right;
+				i {
+					margin-right: 10px;
+				}
+			}
+		}
+
+		&-info {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			border-radius: 8px;
+			background-image: colors.$dark-gradient-solid;
+			opacity: 0;
+			transform: rotateY(180deg);
+			transition: transform 1s, opacity 1s;
+			h4 {
+				margin-top: 8em;
+			}
+			h5 {
+				font-weight: 300;
+				font-size: 1.2em;
+			}
+			&-title {
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				top: 1.2em;
+				font-family: 'Dancing Script', cursive;
+				font-size: 2.5rem;
+			}
+			&-list {
+				// margin: 0 auto 0;
+				margin: 0 auto;
+				width: 70%;
+				list-style: none;
+
+				&-item {
+					padding: 1em;
+					border-bottom: 1px solid colors.$light-white;
+					&:last-child {
+						border-bottom: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+// MEETING
+.meeting {
+	position: relative;
+	.meeting-card {
+		position: relative;
+		margin: 3em 2em;
+		border: 2px solid colors.$dark;
+		box-shadow: 2px 2px 5px colors.$blue-color_hover;
+		border-radius: 8px;
+		background-position: center;
+		background-size: cover;
+		color: colors.$light-white;
+		box-shadow: 10px 10px 15px colors.$dark;
+		padding: 1em;
+		height: 600px;
+
+		&--one {
+			background-image: colors.$zsp-dark-gradient, url('../img/meeting1.jpg');
+		}
+		&--two {
+			background-image: colors.$zsp-dark-gradient, url('../img/meeting2.jpg');
+		}
+		&--three {
+			background-image: colors.$zsp-dark-gradient, url('../img/meeting3.jpg');
+		}
+		&--four {
+			background-image: colors.$zsp-dark-gradient, url('../img/meeting4.jpg');
+		}
+		&--five {
+			background-image: colors.$zsp-dark-gradient, url('../img/meeting5.jpg');
+		}
+
+		&__number {
+			text-align: center;
+			font-size: 2.2rem;
+			margin: 1em;
+			letter-spacing: 3px;
+		}
+
+		&__title {
+			font-family: 'Dancing Script', cursive;
+			font-size: 2.6rem;
+			text-align: center;
+			margin-bottom: 1em;
+		}
+		&__text {
+			position: absolute;
+			bottom: 0;
+			top: 0;
+			left: 0;
+			right: 0;
+			// transform: translate(50%,50%);
+			width: 100%;
+			height: 100%;
+			font-size: 1.8rem;
+			text-align: center;
+			padding: 2em 1em;
+			margin: 0;
+			// background-color: rgba(0, 0, 0, 0.9);
+			background-image: colors.$dark-gradient2;
+			clip-path: circle(0 at 50% 90%);
+			transition: clip-path 0.85s;
+			line-height: 1.3em;
+			&--one {
+				padding: 1em 0;
+			}
+		}
+		&__btn {
+			position: absolute;
+			left: 50%;
+			bottom: 25px;
+			transform: translateX(-50%);
+			margin: 1em 0;
+			padding: 1em 1em;
+			border: none;
+			border-radius: 8px;
+			font-size: 1.8rem;
+			// background-color: colors.$light-grey;
+			background-color: transparentize($color: colors.$light-white, $amount: 0.9);
+			// background: none;
+			color: colors.$light-white;
+			text-shadow: 1px 1px 5px colors.$dark;
+			cursor: pointer;
+			z-index: 10;
+		}
+		&__btn:hover ~ .meeting-card__text {
+			clip-path: circle(120% at 50% 90%);
+		}
+	}
+
+	.meeting-card:hover {
+		box-shadow: 10px 10px 15px colors.$blue-color_hover;
+	}
+}
+
+// RETURN-TO-UP
+.return-to-up {
+	height: 20vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 2em;
+	.btn-up-arrow {
+		cursor: pointer;
+		z-index: 100;
+		color: colors.$blue-color;
+		transition: border 0.3s, color 1s;
+	}
+	.btn-up-arrow:hover {
+		border: colors.$dark;
+		color: colors.$blue-color_hover;
+	}
+}
+// FOOTER
+.the-footer {
+	// height: 50vh;
+	background-image: colors.$zsp-gradient-solid;
+	color: colors.$pure-white;
+	text-align: center;
+
+	.footer {
+		padding: 1em;
+
+		&__logo {
+			display: inline-block;
+			padding: 1em;
+			transition: transform 0.3s;
+			.logoZSP {
+				height: 150px;
+			}
+			&:hover {
+				transform: scale(0.9);
+			}
+		}
+
+		&__hr {
+			width: 90%;
+			max-width: 900px;
+			color: colors.$pure-white;
+			margin: 1em auto;
+		}
+
+		&__text {
+			font-size: 2rem;
+			p {
+				line-height: 1.5em;
+			}
+		}
+	}
+}
+
+// ================================================
+// MEDIA
+// ================================================
+@import './media576';
+@import './media768';
+@import './media992';
+@import './media1200';

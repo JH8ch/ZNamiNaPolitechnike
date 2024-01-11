@@ -1,0 +1,80 @@
+// media992
+@media (min-width: 992px) {
+    
+	.nav {
+		&__item {
+			font-size: 2rem;
+		}
+	}
+	.burger-btn {
+		top: 50px;
+		right: 50px;
+	}
+
+	.nav {
+		font-size: 1.8rem;
+	}
+
+	.header {
+		background-image: colors.$dark-gradient, url('../img/header-big.jpg');
+		&__heading {
+			font-size: 7.5rem;
+		}
+		&__text {
+			font-size: 5rem;
+		}
+		&__btn {
+			font-size: 2.6rem;
+		}
+	}
+
+	.description {
+		&__box {
+			margin: 5em 0;
+
+			&-text {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+			}
+		}
+
+		&__title {
+			font-size: 3.6rem;
+		}
+
+		&__text {
+			font-size: 2.2rem;
+		}
+	}
+	.meeting {
+		.meeting-cards {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(2, 1fr);
+			// grid-template-rows: 1fr 1fr;
+		}
+
+		.meeting-card {
+			&__number {
+				font-size: 2.6rem;
+			}
+
+			&__title {
+				font-size: 3.2rem;
+			}
+			&__text {
+				font-size: 2.2rem;
+			}
+		}
+	}
+
+	
+	.the-footer {
+		.footer {
+			&__text {
+				font-size: 2.8rem;
+			}
+		}
+	}
+}
